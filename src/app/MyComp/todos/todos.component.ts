@@ -10,22 +10,16 @@ export class TodosComponent implements OnInit {
   todo:Todo[];
   title:string="";
   desc:string="";
+  localItem:any
   @Input() todoAdd:EventEmitter<Todo>=new EventEmitter();
   constructor() {
-    this.todo=[
-      {
-        sno:3,
-        title:"this title",
-        desc:"this desc",
-        active:true
-      },
-      {
-        sno:4,
-        title:"this title2",
-        desc:"this desc2",
-        active:true
-      }
-    ]
+    this.todo=[]
+    this.localItem=localStorage.getItem("todos");
+     if(this.localItem==null){
+       this.todo=[];
+     }else{
+       this.todo=JSON.parse(this.localItem)
+     }
    }
 
   ngOnInit(): void {
@@ -33,10 +27,21 @@ export class TodosComponent implements OnInit {
   deleteTodo(todo:Todo){
     const index=this.todo.indexOf(todo);
     this.todo.splice(index,1);
+    localStorage.setItem("todos",JSON.stringify(this.todo))
+    console.log(localStorage);
   }
 
   addTodo(todo:Todo){
   const index=this.todo.indexOf(todo);
   this.todo.push(todo)
+  localStorage.setItem("todos",JSON.stringify(this.todo))
+  console.log(localStorage);
+ }
+ toggleTodo(todo:Todo){
+  console.log(todo)
+  const index=this.todo.indexOf(todo);
+  this.todo[index].active=!this.todo[index].active
+  localStorage.setItem("todos",JSON.stringify(this.todo))
+  console.log(todo)
  }
 }

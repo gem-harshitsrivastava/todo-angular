@@ -8,6 +8,11 @@ import { FormsModule } from '@angular/forms';
 import { TodosComponent } from './MyComp/todos/todos.component';
 import { TodoItemComponent } from './MyComp/todo-item/todo-item.component';
 import { TodoAddComponent } from './MyComp/todo-add/todo-add.component';
+import { RouterModule, Routes } from '@angular/router';
+import { NewNotesComponent } from './new-notes/new-notes.component';
+import { ViewNotesComponent } from './view-notes/view-notes.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +24,8 @@ import { TodoAddComponent } from './MyComp/todo-add/todo-add.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+   
   ],
   providers: [],
   bootstrap: [AppComponent]

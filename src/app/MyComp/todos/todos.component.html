@@ -1,10 +1,13 @@
 <div class="row">
-    <div class="col-md-6 col-xs-6 col-lg-6">
-    <app-todo-add (todoAdd)="addTodo($event)"></app-todo-add>
+    <div class="col-md-4 col-xs-4 col-lg-4" style="float: left;">
+    <app-todo-add (todoAdd)="addTodo($event)" ></app-todo-add>
   </div>
-  <div class="col-md-6 col-xs-6 col-lg-6">
-    <ul *ngFor="let todo of todo" style="padding-top: 10%;">
-      <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)"></app-todo-item>
-    </ul>
+  <div class="col-md-8 col-xs-8 col-lg-8 row" style="float: left;">
+    <h4 style="text-align: center;">My Tasks</h4>
+    <div class="col-md-4 col-xs-4 col-lg-4" *ngFor="let todo of todo" >
+      <app-todo-item [todo]="todo" (todoDelete)="deleteTodo($event)"
+       (todoCheckBox)="toggleTodo(todo)"></app-todo-item>
+    </div>
   </div>
 
+  <!--  -->

@@ -1,2 +1,12 @@
-<li>{{todo?.title}}-{{todo?.desc}}</li>
-  <button (click)="onDelete(todo)" class="button btn-danger">Delete</button>
+<span>
+<div class="card" style="background-color: #dcdcdc;height: 150px;width: 250px;;">
+<h3  [ngClass]='{"strike":!todo.active}' style="align-content: center;text-align: center;">{{todo?.title}}</h3>
+  <h4 [ngClass]="{'strike':!todo.active}" style="align-content: center;text-align: center;">{{todo?.desc}}</h4>
+  <div class="form-check">
+    <input type="checkbox"[checked]="!todo.active" (click)="onCheckboxClick(todo)" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Mark as Done</label>
+  </div>
+  <button (click)="onDelete(todo)" class="button btn-danger" 
+  style="margin-top:20%;margin-left: 30%;margin-right: 30%;">Remove</button>
+</div>
+</span>
